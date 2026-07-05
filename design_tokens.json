@@ -1,0 +1,70 @@
+{
+  "theme": "Bhukkad Premium Dark",
+  "colors": {
+    "primary": {
+      "accent": "#FF5722",
+      "accentGradientStart": "#FF8A00",
+      "accentGradientEnd": "#FF3D00"
+    },
+    "feedback": {
+      "success": "#4CAF50",
+      "warning": "#FFC107",
+      "error": "#FF5252",
+      "info": "#2196F3"
+    },
+    "neutral": {
+      "background": "#121212",
+      "surface": "#1E1E1E",
+      "surfaceElevated": "#2C2C2C",
+      "border": "#383838",
+      "textPrimary": "#FFFFFF",
+      "textSecondary": "#B3B3B3",
+      "textMuted": "#757575"
+    },
+    "glass": {
+      "background": "rgba(30, 30, 30, 0.75)",
+      "border": "rgba(255, 255, 255, 0.08)",
+      "blurRadius": "16px"
+    }
+  },
+  "typography": {
+    "fontFamilyHeading": "Outfit, Poppins, sans-serif",
+    "fontFamilyBody": "Inter, system-ui, sans-serif",
+    "sizes": {
+      "h1": "28px",
+      "h2": "22px",
+      "h3": "18px",
+      "bodyLarge": "16px",
+      "bodyMedium": "14px",
+      "bodySmall": "12px",
+      "caption": "10px"
+    },
+    "weights": {
+      "bold": "700",
+      "semiBold": "600",
+      "medium": "500",
+      "regular": "400"
+    }
+  },
+  "shapes": {
+    "borderRadiusSmall": "8px",
+    "borderRadiusMedium": "16px",
+    "borderRadiusLarge": "24px",
+    "borderRadiusCircular": "50%"
+  },
+  "elevations": {
+    "cardShadow": "0 8px 30px rgba(0, 0, 0, 0.3)",
+    "glassShadow": "0 8px 32px 0 rgba(0, 0, 0, 0.37)"
+  },
+  "features": {
+    "dopamineBar": {
+      "fillColor": "#4CAF50",
+      "trackColor": "#2C2C2C",
+      "animationDuration": "800ms"
+    },
+    "craveCoins": {
+      "iconColor": "#FFD700",
+      "accentColor": "#FFC107"
+    }
+  }
+}
