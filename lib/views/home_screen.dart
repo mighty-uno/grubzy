@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/app_state.dart';
 import '../theme/design_tokens.dart';
 import 'browse_view.dart';
@@ -76,6 +77,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       actions: [
+        IconButton(
+          icon: const Icon(Icons.coffee, color: Color(0xFFFFDD00)),
+          tooltip: 'Buy Me A Coffee',
+          onPressed: () => _launchSupportUrl(),
+        ),
         _buildCoinsBadge(state.craveCoins),
         const SizedBox(width: 16),
       ],
@@ -203,7 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
             hasDot: state.isTrackingActive,
           ),
           _buildSidebarItem(state, 3, Icons.bar_chart, 'Savings Hub'),
-          
+          const SizedBox(height: 8),
+          _buildSupportSidebarItem(),
           const Spacer(),
           
           // Location Badge
@@ -308,6 +315,43 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Future<void> _launchSupportUrl() async {
+    final Uri url = Uri.parse('https://rzp.io/rzp/fAcZtag');
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      debugPrint('Could not launch support URL');
+    }
+  }
+
+  Widget _buildSupportSidebarItem() {
+    return InkWell(
+      onTap: _launchSupportUrl,
+      borderRadius: AppTheme.borderSmall,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.coffee,
+              color: Color(0xFFFFDD00),
+              size: 20,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Buy Me A Coffee',
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xFFFFDD00),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

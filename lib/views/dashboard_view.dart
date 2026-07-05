@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/app_state.dart';
 import '../theme/design_tokens.dart';
 import 'order_history_dialog.dart';
@@ -46,7 +47,9 @@ class DashboardView extends StatelessWidget {
                 const SizedBox(width: 24),
                 Expanded(child: _buildMilestonesCard(state)),
               ],
-            )
+            ),
+          const SizedBox(height: 24),
+          _buildSupportDopamineCard(isMobile),
         ],
       ),
     );
@@ -304,6 +307,80 @@ class DashboardView extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildSupportDopamineCard(bool isMobile) {
+    final content = [
+      CircleAvatar(
+        backgroundColor: const Color(0xFFFFDD00).withOpacity(0.15),
+        radius: 26,
+        child: const Icon(Icons.coffee, color: Color(0xFFFFDD00), size: 28),
+      ),
+      if (!isMobile) const SizedBox(width: 16) else const SizedBox(height: 12),
+      Expanded(
+        flex: isMobile ? 0 : 1,
+        child: Column(
+          crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Support Zepkit Development',
+              style: GoogleFonts.outfit(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              textAlign: isMobile ? TextAlign.center : TextAlign.start,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Enjoying your zero-calorie cravings? Support our maintenance with a hot virtual cup of coffee.',
+              style: GoogleFonts.inter(
+                fontSize: 12,
+                color: AppTheme.textSecondary,
+              ),
+              textAlign: isMobile ? TextAlign.center : TextAlign.start,
+            ),
+          ],
+        ),
+      ),
+      if (!isMobile) const SizedBox(width: 16) else const SizedBox(height: 16),
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFFFFDD00),
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(borderRadius: AppTheme.borderMedium),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        ),
+        onPressed: () async {
+          final Uri url = Uri.parse('https://rzp.io/rzp/fAcZtag');
+          if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+            debugPrint('Could not launch support URL');
+          }
+        },
+        child: Text(
+          'Buy Coffee',
+          style: GoogleFonts.inter(fontWeight: FontWeight.bold, fontSize: 13),
+        ),
+      ),
+    ];
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1E1E12),
+        border: Border.all(color: const Color(0xFFFFDD00).withOpacity(0.3)),
+        borderRadius: AppTheme.borderMedium,
+      ),
+      child: isMobile
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: content,
+            )
+          : Row(
+              children: content,
+            ),
     );
   }
 }
