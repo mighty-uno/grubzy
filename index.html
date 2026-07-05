@@ -3,434 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bhukkad | Dopamine Delivery Simulator</title>
-  <meta name="description" content="Satisfy your food delivery app browsing and ordering cravings with zero calories and zero spending.">
+  <title>Zepkit | Dopamine Delivery Simulator</title>
+  <meta name="description" content="Satisfy your food delivery app browsing and checking out cravings with zero calories and zero real spending! Designed in Flutter.">
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dark-theme">
-  
-  <!-- Responsive Layout Container -->
-  <div class="app-layout">
+
+  <!-- Main Showcase Layout -->
+  <div class="landing-container">
     
-    <!-- Sidebar Navigation (Web View Only) -->
-    <aside class="sidebar">
+    <!-- Header Section -->
+    <header class="landing-header">
       <div class="brand">
         <span class="material-symbols-outlined logo-icon">ramen_dining</span>
-        <h1>Bhukkad</h1>
+        <h1>Zepkit</h1>
       </div>
+      <div class="header-links">
+        <a href="https://github.com/mighty-uno/zepkit" target="_blank" class="github-btn">
+          <span class="material-symbols-outlined">code</span>
+          GitHub Repo
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Content -->
+    <section class="hero-section">
+      <div class="glow-sphere green-glow"></div>
+      <div class="glow-sphere pink-glow"></div>
       
-      <div class="user-profile-summary">
-        <div class="avatar">B</div>
-        <div class="profile-info">
-          <p class="profile-name">Bhukkad Kumar</p>
-          <div class="coins-badge">
-            <span class="material-symbols-outlined coin-gold">toll</span>
-            <span id="web-crave-coins">450</span> CC
-          </div>
+      <div class="hero-text-block">
+        <span class="badge-promo">Lightning Fast Simulated Delivery</span>
+        <h2 class="hero-title">Virtual Cravings,<br><span class="gradient-text">Zero Real Calories.</span></h2>
+        <p class="hero-subtitle">
+          Zepkit is a gamified cravings simulator built in Flutter. Explore dishes, checkout virtual items with Cash on Delivery (no delivery fees!), follow live tracking countdowns, and track your metrics in the Savings Hub.
+        </p>
+
+        <!-- Call-to-Action Bar -->
+        <div class="cta-actions">
+          <a href="https://www.buymeacoffee.com/mightyuno" target="_blank" class="bmc-btn">
+            <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
+            <span>Buy Me A Coffee</span>
+          </a>
         </div>
       </div>
-      
-      <nav class="nav-menu">
-        <a href="#" class="nav-item active" data-tab="browse">
-          <span class="material-symbols-outlined">restaurant</span>
-          <span>Browse Cravings</span>
-        </a>
-        <a href="#" class="nav-item" data-tab="cart">
-          <span class="material-symbols-outlined">shopping_cart</span>
-          <span>My Cart</span>
-          <span class="badge cart-count" style="display: none;">0</span>
-        </a>
-        <a href="#" class="nav-item" data-tab="tracking">
-          <span class="material-symbols-outlined">local_shipping</span>
-          <span>Live Tracking</span>
-          <span class="active-dot" style="display: none;"></span>
-        </a>
-        <a href="#" class="nav-item" data-tab="dashboard">
-          <span class="material-symbols-outlined">monitoring</span>
-          <span>Savings Hub</span>
-        </a>
-      </nav>
-    </aside>
+    </section>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
-      
-      <!-- Top header (Mobile visible, Web shows detail header) -->
-      <header class="top-header">
-        <div class="header-left">
-          <div class="brand mobile-only">
-            <span class="material-symbols-outlined logo-icon">ramen_dining</span>
-            <h1>Bhukkad</h1>
-          </div>
-          <div class="location-badge">
-            <span class="material-symbols-outlined">location_on</span>
-            <span>Virtual Kitchen, India</span>
-          </div>
-        </div>
-        <div class="header-right">
-          <div class="coins-badge">
-            <span class="material-symbols-outlined coin-gold">toll</span>
-            <span id="mobile-crave-coins">450</span> CC
-          </div>
-        </div>
-      </header>
+    <!-- Interactive Phone Viewport Mockups -->
+    <section class="mockup-gallery-section">
+      <div class="section-header">
+        <h3>Application Walkthrough</h3>
+        <p>Interactive previews of Zepkit's interfaces</p>
+      </div>
 
-      <!-- TAB 1: Browse Screen -->
-      <section id="tab-browse" class="tab-pane active">
-        <!-- Search and Cravings Slider -->
-        <div class="search-container">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" id="food-search" placeholder="Search for imaginary butter chicken, biryani...">
-        </div>
-
-        <div class="section-title">
-          <h2>What are you craving?</h2>
-        </div>
-        <div class="categories-slider">
-          <div class="category-chip active" data-category="all">
-            <span class="material-symbols-outlined">menu_book</span>
-            <span>All Foods</span>
-          </div>
-          <div class="category-chip" data-category="biryani">
-            <span class="material-symbols-outlined">rice_bowl</span>
-            <span>Biryani</span>
-          </div>
-          <div class="category-chip" data-category="chaat">
-            <span class="material-symbols-outlined">icecream</span>
-            <span>Chaat</span>
-          </div>
-          <div class="category-chip" data-category="south-indian">
-            <span class="material-symbols-outlined">flatware</span>
-            <span>South Indian</span>
-          </div>
-          <div class="category-chip" data-category="burgers">
-            <span class="material-symbols-outlined">lunch_dining</span>
-            <span>Burgers</span>
-          </div>
-          <div class="category-chip" data-category="desserts">
-            <span class="material-symbols-outlined">cake</span>
-            <span>Desserts</span>
-          </div>
-        </div>
-
-        <!-- Restaurant list -->
-        <div class="section-title">
-          <h2>Imaginary Restaurants Near You</h2>
-        </div>
-        <div class="restaurants-grid" id="restaurants-container">
-          <!-- Dynamically inserted by JS -->
-        </div>
-      </section>
-
-      <!-- TAB 2: Cart Screen -->
-      <section id="tab-cart" class="tab-pane">
-        <div class="cart-screen-container">
-          <div class="cart-items-section">
-            <h2>Your Virtual Plate</h2>
-            <div id="cart-items-list" class="cart-items-list">
-              <!-- Dynamically populated or Empty state -->
-              <div class="empty-state">
-                <span class="material-symbols-outlined empty-icon">shopping_basket</span>
-                <h3>Your plate is empty!</h3>
-                <p>Go back and add some virtual food to satisfy your cravings.</p>
-                <button class="btn btn-primary" onclick="switchTab('browse')">Browse Restaurants</button>
+      <div class="mockups-grid">
+        
+        <!-- Mockup 1: Browse View -->
+        <div class="phone-frame-card">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Browse Mockup Content -->
+              <div class="mock-app-header">
+                <span class="material-symbols-outlined">menu</span>
+                <span class="mock-app-title">Zepkit</span>
+                <span class="material-symbols-outlined">shopping_basket</span>
               </div>
-            </div>
-          </div>
-          
-          <div class="cart-summary-section">
-            <div class="savings-card-glow">
-              <div class="dopamine-progress-header">
-                <h3>Real Money Saved Today</h3>
-                <span class="saved-amount" id="savings-amount">₹0</span>
-              </div>
-              <div class="dopamine-progress-bar-container">
-                <div class="dopamine-progress-bar" id="savings-progress-bar" style="width: 0%"></div>
-              </div>
-              <p class="savings-fact" id="savings-message">Add items to calculate your real rupees saved!</p>
-            </div>
-            
-            <div class="checkout-card">
-              <h3>Receipt Details</h3>
-              <div class="receipt-row">
-                <span>Items Subtotal (Virtual)</span>
-                <span id="receipt-subtotal">₹0</span>
-              </div>
-              <div class="receipt-row success">
-                <span>Imaginary discount (100% Off)</span>
-                <span id="receipt-discount">-₹0</span>
-              </div>
-              <div class="receipt-row">
-                <span>Calorie delivery fee</span>
-                <span>₹0 (0 kcal)</span>
-              </div>
-              <hr class="receipt-divider">
-              <div class="receipt-row total">
-                <span>Order Total</span>
-                <span>₹0</span>
-              </div>
-              <div class="receipt-row total-saved">
-                <span>Real Money Saved</span>
-                <span id="receipt-real-saved" class="green-text">₹0</span>
-              </div>
-              <button class="btn btn-checkout btn-primary" id="btn-place-order" disabled>
-                <span>Place Simulated Order</span>
-                <span class="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB 3: Live Tracking Screen -->
-      <section id="tab-tracking" class="tab-pane">
-        <div class="tracking-container">
-          <div class="tracking-header">
-            <h2>Dopamine Delivery in Progress</h2>
-            <p id="tracking-status-badge" class="tracking-badge">Active Simulator</p>
-          </div>
-          
-          <div class="tracking-grid">
-            <div class="map-simulation">
-              <div class="map-background">
-                <!-- Abstract neon vector grid representing the map -->
-                <div class="map-road-grid"></div>
-                <div class="restaurant-node">
-                  <span class="material-symbols-outlined node-icon">storefront</span>
-                  <div class="tooltip">Virtual Kitchen</div>
+              <div class="mock-app-body">
+                <div class="mock-search">
+                  <span class="material-symbols-outlined">search</span>
+                  <span>Search imaginary cuisines...</span>
                 </div>
-                <div class="delivery-rider" id="rider-icon">
-                  <span class="material-symbols-outlined rider-icon-inner">directions_run</span>
-                  <div class="exhaust-trail"></div>
+                <p class="mock-section-title">Cravings Categories</p>
+                <div class="mock-categories">
+                  <span class="mock-chip active">All</span>
+                  <span class="mock-chip">Biryani</span>
+                  <span class="mock-chip">Burger</span>
+                  <span class="mock-chip">Sushi</span>
                 </div>
-                <div class="user-node">
-                  <span class="material-symbols-outlined node-icon">home</span>
-                  <div class="tooltip">You (Dopamine Consumer)</div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="delivery-steps-card">
-              <h3>Live Updates from Raju (Delivery Partner)</h3>
-              <div class="delivery-steps" id="delivery-steps-timeline">
-                <div class="step-item" id="step-0">
-                  <div class="step-indicator">
-                    <span class="material-symbols-outlined">restaurant</span>
-                  </div>
-                  <div class="step-content">
-                    <h4>Order Placed Virtually</h4>
-                    <p>Cooking instructions sent: "Send virtual aroma and crispiness."</p>
+                <p class="mock-section-title">Popular Kitchens</p>
+                <div class="mock-restaurant-card">
+                  <div class="mock-res-image" style="background-image: url('https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=150&q=80')"></div>
+                  <div class="mock-res-details">
+                    <p class="mock-res-name">Delhi Durbar</p>
+                    <span class="mock-badge">★ 4.8 • 15 mins</span>
+                    <span class="mock-badge-green">100% OFF (Save ~800 kcal)</span>
                   </div>
                 </div>
-                <div class="step-item disabled" id="step-1">
-                  <div class="step-indicator">
-                    <span class="material-symbols-outlined">soup_kitchen</span>
-                  </div>
-                  <div class="step-content">
-                    <h4>Chef Speculating Food</h4>
-                    <p>Chef Ramesh is looking at the ingredients and visualizing your Biryani intensely.</p>
-                  </div>
-                </div>
-                <div class="step-item disabled" id="step-2">
-                  <div class="step-indicator">
-                    <span class="material-symbols-outlined">motorcycle</span>
-                  </div>
-                  <div class="step-content">
-                    <h4>Raju Dispatched</h4>
-                    <p>Rider Raju is speeding past virtual speed breakers at infinite speed.</p>
-                  </div>
-                </div>
-                <div class="step-item disabled" id="step-3">
-                  <div class="step-indicator">
-                    <span class="material-symbols-outlined">notifications_active</span>
-                  </div>
-                  <div class="step-content">
-                    <h4>Delivered!</h4>
-                    <p>Take a deep, slow breath to consume the virtual essence of your craving. Saved calories: <strong id="saved-calories-value">0 kcal</strong>.</p>
+                <div class="mock-restaurant-card">
+                  <div class="mock-res-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=150&q=80')"></div>
+                  <div class="mock-res-details">
+                    <p class="mock-res-name">Burger Lab</p>
+                    <span class="mock-badge">★ 4.9 • 20 mins</span>
+                    <span class="mock-badge-green">Free Extra Cheese</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <p class="frame-caption">1. Browse Cravings Menu</p>
         </div>
-      </section>
 
-      <!-- TAB 4: Savings Dashboard Screen -->
-      <section id="tab-dashboard" class="tab-pane">
-        <div class="dashboard-grid">
-          
-          <!-- Stats Summary -->
-          <div class="stat-box-large">
-            <h3>Your Imaginary Savings Jars</h3>
-            <p class="subtext">How your cravings simulator translates to real financial and physical health.</p>
-            <div class="stats-row">
-              <div class="stat-card">
-                <div class="stat-card-icon money">
-                  <span class="material-symbols-outlined">account_balance_wallet</span>
-                </div>
-                <div class="stat-card-data">
-                  <h4 id="dash-money-saved">₹0</h4>
-                  <p>Real Money Saved</p>
-                </div>
+        <!-- Mockup 2: Live Tracking -->
+        <div class="phone-frame-card">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Live Tracking Mockup -->
+              <div class="mock-app-header">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span class="mock-app-title">Live Tracking</span>
+                <span class="material-symbols-outlined">more_vert</span>
               </div>
-              <div class="stat-card">
-                <div class="stat-card-icon calories">
-                  <span class="material-symbols-outlined">fire_clinic</span>
+              <div class="mock-app-body">
+                <!-- Delivery Banner -->
+                <div class="mock-delivery-banner">
+                  <span class="material-symbols-outlined">flash_on</span>
+                  <div class="banner-text">
+                    <p class="banner-h">Lightning Fast Delivery</p>
+                    <p class="banner-d">We don't charge delivery fee!</p>
+                  </div>
                 </div>
-                <div class="stat-card-data">
-                  <h4 id="dash-calories-saved">0 kcal</h4>
-                  <p>Calories Dodged</p>
+                
+                <!-- Countdown Timer Card -->
+                <div class="mock-timer-card">
+                  <div class="timer-circle">
+                    <span class="material-symbols-outlined">timer</span>
+                  </div>
+                  <div class="timer-details">
+                    <p class="timer-lbl">Estimated Arrival</p>
+                    <p class="timer-time">00:48</p>
+                  </div>
                 </div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-card-icon orders">
-                  <span class="material-symbols-outlined">check_circle</span>
-                </div>
-                <div class="stat-card-data">
-                  <h4 id="dash-orders-placed">0</h4>
-                  <p>Ghost Orders Placed</p>
+
+                <!-- Vertical progress mapping path -->
+                <p class="mock-section-title">Delivery Status</p>
+                <div class="mock-status-list">
+                  <div class="mock-status-row active">
+                    <span class="dot green">✓</span>
+                    <div class="status-info">
+                      <p class="status-h">Cooking Aroma...</p>
+                      <p class="status-d">Chef is speculating ingredients</p>
+                    </div>
+                  </div>
+                  <div class="mock-status-row active">
+                    <span class="dot orange">⟳</span>
+                    <div class="status-info">
+                      <p class="status-h">Bablu Booster Speeding</p>
+                      <p class="status-d">Rider pickup in process</p>
+                    </div>
+                  </div>
+                  <div class="mock-status-row">
+                    <span class="dot grey">•</span>
+                    <div class="status-info">
+                      <p class="status-h">Delivered</p>
+                      <p class="status-d">Dopamine successfully absorbed</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Level Progress -->
-          <div class="stat-box level-card">
-            <h3>Crave Level Status</h3>
-            <div class="level-badge-large">
-              <span class="material-symbols-outlined level-icon">workspace_premium</span>
-              <div class="level-text">
-                <h4 id="user-crave-rank">Biryani Novice</h4>
-                <p>Level <span id="user-level-num">1</span></p>
-              </div>
-            </div>
-            <div class="progress-bar-label">
-              <span>Experience to next level</span>
-              <span id="xp-text">0 / 100 XP</span>
-            </div>
-            <div class="progress-bar-container">
-              <div class="progress-bar-fill" id="xp-progress-bar" style="width: 0%"></div>
-            </div>
-            <p class="level-tip">*Earn XP by adding items, simulating checkouts, and tracking deliveries.</p>
-          </div>
-
-          <!-- Savings target -->
-          <div class="stat-box reward-jar">
-            <h3>What can you buy with your real savings?</h3>
-            <div class="reward-goal-list" id="reward-goals-container">
-              <!-- Dynamically populated target rewards based on money saved -->
-            </div>
-          </div>
+          <p class="frame-caption">2. Real-Time Tracker</p>
         </div>
-      </section>
 
-    </main>
-    
-    <!-- Bottom Navigation Bar (Mobile View Only) -->
-    <nav class="bottom-nav">
-      <a href="#" class="nav-item active" data-tab="browse">
-        <span class="material-symbols-outlined">restaurant</span>
-        <span class="nav-label">Browse</span>
-      </a>
-      <a href="#" class="nav-item" data-tab="cart">
-        <span class="material-symbols-outlined">shopping_cart</span>
-        <span class="nav-label">Cart</span>
-        <span class="badge cart-count" style="display: none;">0</span>
-      </a>
-      <a href="#" class="nav-item" data-tab="tracking">
-        <span class="material-symbols-outlined">local_shipping</span>
-        <span class="nav-label">Tracking</span>
-        <span class="active-dot" style="display: none;"></span>
-      </a>
-      <a href="#" class="nav-item" data-tab="dashboard">
-        <span class="material-symbols-outlined">monitoring</span>
-        <span class="nav-label">Savings</span>
-      </a>
-    </nav>
+        <!-- Mockup 3: Dashboard Stats -->
+        <div class="phone-frame-card">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Savings Dashboard -->
+              <div class="mock-app-header">
+                <span class="material-symbols-outlined">account_circle</span>
+                <span class="mock-app-title">Savings Hub</span>
+                <span class="material-symbols-outlined">notifications</span>
+              </div>
+              <div class="mock-app-body">
+                <!-- Level Widget -->
+                <div class="mock-level-card">
+                  <div class="level-badge">LVL 4</div>
+                  <div class="level-progress">
+                    <p class="level-h">Cravings Master</p>
+                    <div class="progress-bar"><div class="bar-fill" style="width: 75%;"></div></div>
+                    <p class="level-xp">140 / 200 XP to Level 5</p>
+                  </div>
+                </div>
+
+                <p class="mock-section-title">Analytics</p>
+                <div class="mock-stat-grid">
+                  <div class="mock-stat-box">
+                    <span class="material-symbols-outlined icon green">account_balance_wallet</span>
+                    <p class="stat-v">₹1,840</p>
+                    <p class="stat-l">Saved Today</p>
+                  </div>
+                  <div class="mock-stat-box">
+                    <span class="material-symbols-outlined icon pink">whatshot</span>
+                    <p class="stat-v">3,450</p>
+                    <p class="stat-l">Kcal Dodged</p>
+                  </div>
+                </div>
+                
+                <div class="mock-stat-box-large">
+                  <div class="coin-badge-left">
+                    <span class="material-symbols-outlined coin">toll</span>
+                  </div>
+                  <div class="coin-details">
+                    <p class="coin-v">480 Coins</p>
+                    <p class="coin-l">Active CraveCoins balance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="frame-caption">3. Savings Analytics</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Hosting Steps Guideline -->
+    <section class="guide-section">
+      <div class="guide-box">
+        <h4><span class="material-symbols-outlined icon">settings</span> How to enable GitHub Pages:</h4>
+        <ol>
+          <li>Ensure your commit changes are pushed to your repo: <code>git push origin main</code>.</li>
+          <li>Go to your GitHub repository on the web: <a href="https://github.com/mighty-uno/zepkit" target="_blank">mighty-uno/zepkit</a>.</li>
+          <li>Navigate to <strong>Settings</strong> -> <strong>Pages</strong> (on the left panel).</li>
+          <li>Under <strong>Build and deployment</strong> -> <strong>Source</strong>: select <code>Deploy from a branch</code>.</li>
+          <li>Under <strong>Branch</strong>: select <code>main</code> and set the directory to <code>/ (root)</code>.</li>
+          <li>Click <strong>Save</strong>. After a few seconds, your showcase website will be hosted live!</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+      <p>© 2026 Zepkit Cravings Simulator. We trust you with money.</p>
+    </footer>
 
   </div>
 
-  <!-- Dynamic Food Detail Modal Dialog (using closedby="any" and custom JavaScript fallback) -->
-  <dialog id="food-detail-dialog" closedby="any" aria-labelledby="dialog-title">
-    <div class="dialog-header">
-      <h2 id="dialog-title">Food Item Name</h2>
-      <button class="close-dialog-btn" onclick="document.getElementById('food-detail-dialog').close()">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    
-    <div class="dialog-body">
-      <div class="dialog-food-banner" id="dialog-food-image" style="background-image: url('placeholder.jpg')"></div>
-      
-      <div class="dialog-section food-description-section">
-        <p id="dialog-food-desc">Delicious food item details are loaded here.</p>
-        <div class="dialog-price-indicator">
-          <span>Virtual Price:</span>
-          <strong id="dialog-food-price">₹0</strong>
-        </div>
-      </div>
-      
-      <form method="dialog" id="customization-form">
-        <!-- Spicy customization -->
-        <div class="dialog-section">
-          <h3>Custom Spice Level <span class="required-tag">Required</span></h3>
-          <div class="option-grid">
-            <label class="option-button">
-              <input type="radio" name="spice-level" value="Mild" checked>
-              <span>Mild</span>
-            </label>
-            <label class="option-button">
-              <input type="radio" name="spice-level" value="Indian Spicy">
-              <span>Indian Spicy</span>
-            </label>
-            <label class="option-button">
-              <input type="radio" name="spice-level" value="Spicy AF">
-              <span>Spicy AF 🌶️</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Add-ons customizer -->
-        <div class="dialog-section">
-          <h3>Virtual Add-ons (Free Dopamine)</h3>
-          <div class="addons-list">
-            <label class="checkbox-row">
-              <div class="checkbox-label-part">
-                <input type="checkbox" name="addon" value="Extra Cheese">
-                <span>Extra Virtual Cheese</span>
-              </div>
-              <span class="price-tag">+₹0</span>
-            </label>
-            <label class="checkbox-row">
-              <div class="checkbox-label-part">
-                <input type="checkbox" name="addon" value="Spicy Masala">
-                <span>Spicy Masala Dusting</span>
-              </div>
-              <span class="price-tag">+₹0</span>
-            </label>
-            <label class="checkbox-row">
-              <div class="checkbox-label-part">
-                <input type="checkbox" name="addon" value="Extra Simulated Gravy">
-                <span>Extra Simulated Gravy</span>
-              </div>
-              <span class="price-tag">+₹0</span>
-            </label>
-          </div>
-        </div>
-        
-        <div class="dialog-footer">
-          <button type="button" class="btn btn-secondary" onclick="document.getElementById('food-detail-dialog').close()">Cancel</button>
-          <button type="submit" class="btn btn-primary" id="btn-add-to-cart-confirm">Add to Plate (₹0)</button>
-        </div>
-      </form>
-    </div>
-  </dialog>
-
-  <!-- Script for business logic and simulation -->
-  <script src="app.js"></script>
 </body>
 </html>
