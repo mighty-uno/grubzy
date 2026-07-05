@@ -14,6 +14,8 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Razorpay Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body class="dark-theme">
@@ -50,10 +52,10 @@
 
         <!-- Call-to-Action Bar -->
         <div class="cta-actions">
-          <a href="https://www.buymeacoffee.com/mightyuno" target="_blank" class="bmc-btn">
+          <button onclick="openRazorpay()" class="bmc-btn" id="bmc-razorpay-trigger">
             <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
             <span>Buy Me A Coffee</span>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -243,6 +245,34 @@
 
   </div>
 
+  <script>
+    function openRazorpay() {
+      var options = {
+        "key": "rzp_test_YOUR_KEY_HERE", // Replace with your live Key ID from Razorpay Dashboard
+        "amount": "10000", // Amount in paise subunits (e.g., 10000 paise = ₹100)
+        "currency": "INR",
+        "name": "Zepkit Support",
+        "description": "Buy Zepkit developers a cup of coffee!",
+        "image": "https://raw.githubusercontent.com/mighty-uno/zepkit/main/web/favicon.png",
+        "handler": function (response) {
+          alert("Thank you! Payment ID: " + response.razorpay_payment_id);
+        },
+        "prefill": {
+          "name": "Zepkit Supporter",
+          "email": "support@zepkit.dev",
+          "contact": "9999999999"
+        },
+        "notes": {
+          "address": "Virtual Kitchen"
+        },
+        "theme": {
+          "color": "#E03E52" // Matches Zepkit pink accent
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
+    }
+  </script>
 </body>
 
 </html>
