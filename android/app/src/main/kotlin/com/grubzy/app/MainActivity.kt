@@ -1,4 +1,4 @@
-package com.example.bhukkad
+package com.grubzy.app
 
 import io.flutter.embedding.android.FlutterActivity
 
