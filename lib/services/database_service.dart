@@ -519,6 +519,7 @@ class DatabaseService {
           }
         } catch (e) {
           debugPrint("Failed to initialize Turso on Web: $e");
+          rethrow;
         }
       } else {
         throw Exception("Turso credentials are required for Web platform execution.");
@@ -682,11 +683,18 @@ class DatabaseService {
     if (response.statusCode == 200) {
       final decoded = jsonDecode(response.body);
       final results = decoded['results'] as List<dynamic>;
-      if (results.isNotEmpty && results[0]['type'] == 'ok') {
-        final executeResult = results[0]['result'];
-        return _parseTursoExecuteResponse(executeResult);
-      } else if (results.isNotEmpty && results[0]['type'] == 'error') {
-        throw Exception("Turso SQL error: ${results[0]['error']['message']}");
+      if (results.isNotEmpty) {
+        if (results[0]['type'] == 'ok') {
+          final responseMap = results[0]['response'];
+          if (responseMap != null && responseMap['type'] == 'execute') {
+            final executeResult = responseMap['result'];
+            if (executeResult != null) {
+              return _parseTursoExecuteResponse(executeResult);
+            }
+          }
+        } else if (results[0]['type'] == 'error') {
+          throw Exception("Turso SQL error: ${results[0]['error']['message']}");
+        }
       }
     }
     throw Exception("Turso HTTP query failed with status: ${response.statusCode}");
@@ -709,15 +717,35 @@ class DatabaseService {
     }).toList();
   }
 
+  dynamic _extractTursoValue(dynamic val) {
+    if (val == null) return null;
+    if (val is Map<String, dynamic>) {
+      final type = val['type'];
+      if (type == 'null') {
+        return null;
+      }
+      final value = val['value'];
+      if (type == 'integer') {
+        return int.tryParse(value?.toString() ?? '') ?? 0;
+      } else if (type == 'float') {
+        return double.tryParse(value?.toString() ?? '') ?? 0.0;
+      } else {
+        return value;
+      }
+    }
+    return val;
+  }
+
   List<Map<String, dynamic>> _parseTursoExecuteResponse(Map<String, dynamic> result) {
     final List<Map<String, dynamic>> rowMaps = [];
     final cols = result['cols'] as List<dynamic>;
     final rows = result['rows'] as List<dynamic>;
     for (var r in rows) {
       final Map<String, dynamic> rowMap = {};
+      final rowList = r as List<dynamic>;
       for (int i = 0; i < cols.length; i++) {
         final colName = cols[i]['name'] as String;
-        rowMap[colName] = r[i];
+        rowMap[colName] = _extractTursoValue(rowList[i]);
       }
       rowMaps.add(rowMap);
     }
