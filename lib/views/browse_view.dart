@@ -117,6 +117,7 @@ class _BrowseViewState extends State<BrowseView> {
         backgroundColor: AppTheme.darkSurface,
         selectedColor: AppTheme.primaryAccent,
         checkmarkColor: Colors.white,
+        showCheckmark: false,
         avatar: Icon(icon, color: isActive ? Colors.white : AppTheme.textSecondary, size: 16),
         label: Text(
           label,
