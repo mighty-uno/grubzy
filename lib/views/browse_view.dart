@@ -236,7 +236,7 @@ class _BrowseViewState extends State<BrowseView> {
                           children: [
                             const Icon(Icons.star, color: Colors.white, size: 12),
                             const SizedBox(width: 2),
-                            Text(r.rating, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                            Text(r.rating, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
                           ],
                         ),
                       ),
