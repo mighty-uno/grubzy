@@ -1,6 +1,8 @@
-# Bhukkad: The Dopamine Delivery Simulator (Flutter Repo)
+# Grubzy: The Dopamine Delivery Simulator (Flutter Repo)
 
 A responsive Flutter project (Web, iOS, Android) designed to satisfy the food delivery scrolling and ordering cravings of Indian users without spending real money or consuming actual calories. It redirects the dopamine loop of apps like Swiggy and Zomato into virtual progress tracking and gamified savings.
+
+**Live Showcase Landing Page:** [grubzy.vercel.app](https://grubzy.vercel.app/)
 
 ---
 
