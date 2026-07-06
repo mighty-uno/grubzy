@@ -3,24 +3,24 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:zepkit/main.dart';
-import 'package:zepkit/models/app_state.dart';
-import 'package:zepkit/views/order_history_dialog.dart';
-import 'package:zepkit/views/payment_dialog.dart';
+import 'package:grubzy/main.dart';
+import 'package:grubzy/models/app_state.dart';
+import 'package:grubzy/views/order_history_dialog.dart';
+import 'package:grubzy/views/payment_dialog.dart';
 
 void main() {
   setUpAll(() {
     HttpOverrides.global = _MockHttpOverrides();
   });
 
-  testWidgets('ZepkitApp smoke test', (WidgetTester tester) async {
+  testWidgets('GrubzyApp smoke test', (WidgetTester tester) async {
     HttpOverrides.global = _MockHttpOverrides();
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => AppState(),
-        child: const ZepkitApp(),
+        child: const GrubzyApp(),
       ),
     );
 

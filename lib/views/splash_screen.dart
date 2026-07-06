@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../models/app_state.dart';
 import '../theme/design_tokens.dart';
 
@@ -104,16 +105,19 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                         ),
                       ],
                     ),
-                    child: const Icon(
-                      Icons.ramen_dining,
-                      color: AppTheme.primaryAccent,
-                      size: 72,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset(
+                        'assets/grubzy_app_icon.svg',
+                        width: 72,
+                        height: 72,
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  'Zepkit',
+                  'Grubzy',
                   style: GoogleFonts.outfit(
                     fontSize: 48,
                     fontWeight: FontWeight.w900,

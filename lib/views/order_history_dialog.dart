@@ -258,7 +258,7 @@ class _OrderHistoryDialogState extends State<OrderHistoryDialog> {
             children: [
               Expanded(
                 child: Text(
-                  order['restaurant_name'] as String? ?? 'Zepkit Kitchen',
+                  order['restaurant_name'] as String? ?? 'Grubzy Kitchen',
                   style: GoogleFonts.outfit(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,

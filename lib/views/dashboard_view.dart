@@ -324,7 +324,7 @@ class DashboardView extends StatelessWidget {
           crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: [
             Text(
-              'Support Zepkit Development',
+              'Support Grubzy Development',
               style: GoogleFonts.outfit(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

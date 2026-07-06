@@ -9,20 +9,20 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppState(),
-      child: const ZepkitApp(),
+      child: const GrubzyApp(),
     ),
   );
 }
 
-class ZepkitApp extends StatelessWidget {
-  const ZepkitApp({super.key});
+class GrubzyApp extends StatelessWidget {
+  const GrubzyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
 
     return MaterialApp(
-      title: 'Zepkit | Dopamine Delivery Simulator',
+      title: 'Grubzy | Dopamine Delivery Simulator',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
       home: state.isInitialized ? const HomeScreen() : const SplashScreen(),

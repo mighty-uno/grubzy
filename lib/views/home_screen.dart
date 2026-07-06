@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../models/app_state.dart';
 import '../theme/design_tokens.dart';
 import 'browse_view.dart';
@@ -64,10 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
       elevation: 0,
       title: Row(
         children: [
-          const Icon(Icons.ramen_dining, color: AppTheme.primaryAccent, size: 28),
+          SvgPicture.asset(
+            'assets/grubzy_app_icon.svg',
+            width: 28,
+            height: 28,
+          ),
           const SizedBox(width: 8),
           Text(
-            'Zepkit',
+            'Grubzy',
             style: GoogleFonts.outfit(
               fontWeight: FontWeight.w800,
               fontSize: 22,
@@ -134,11 +139,15 @@ class _HomeScreenState extends State<HomeScreen> {
           // Logo Part
           Row(
             children: [
-              const Icon(Icons.ramen_dining, color: AppTheme.primaryAccent, size: 36),
+              SvgPicture.asset(
+                'assets/grubzy_app_icon.svg',
+                width: 36,
+                height: 36,
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                   'Zepkit',
+                   'Grubzy',
                   style: GoogleFonts.outfit(
                     fontSize: 26,
                     fontWeight: FontWeight.w800,
@@ -163,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   backgroundColor: AppTheme.primaryAccent,
                   radius: 20,
                   child: Text(
-                    'Z',
+                    'G',
                     style: GoogleFonts.outfit(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -176,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Zepkit Diner',
+                        'Grubzy Diner',
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w600,
                           fontSize: 13,

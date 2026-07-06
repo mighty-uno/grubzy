@@ -1,4 +1,4 @@
-name: zepkit
+name: grubzy
 description: A simulated food delivery application designed to satisfy cravings and track real savings.
 
 publish_to: 'none'
@@ -20,6 +20,7 @@ dependencies:
   path: ^1.9.1
   http: ^1.6.0
   url_launcher: ^6.3.2
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -29,6 +30,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Asset setup for food images and illustrations if needed
-  # assets:
-  #   - assets/images/
+  assets:
+    - assets/grubzy_app_icon.svg
+    - assets/grubzy_logo_horizontal.svg

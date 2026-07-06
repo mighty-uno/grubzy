@@ -21,7 +21,7 @@ class DatabaseService {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDB('zepkit.db');
+    _database = await _initDB('grubzy.db');
     return _database!;
   }
 
