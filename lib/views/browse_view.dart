@@ -92,10 +92,12 @@ class _BrowseViewState extends State<BrowseView> {
               ? _buildEmptyState()
               : GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
-                    childAspectRatio: 1.3,
+                    crossAxisCount: MediaQuery.of(context).size.width < 600
+                        ? 1
+                        : (MediaQuery.of(context).size.width < 1000 ? 2 : 4),
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    childAspectRatio: 1.25,
                   ),
                   itemCount: filteredRestaurants.length,
                   itemBuilder: (context, index) {
