@@ -19,16 +19,20 @@ class _BrowseViewState extends State<BrowseView> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
-    
+
     // Filtering restaurants
     final filteredRestaurants = state.restaurants.where((r) {
-      final matchesSearch = r.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-          r.tags.any((t) => t.toLowerCase().contains(_searchQuery.toLowerCase()));
-      
+      final matchesSearch = r.name
+              .toLowerCase()
+              .contains(_searchQuery.toLowerCase()) ||
+          r.tags
+              .any((t) => t.toLowerCase().contains(_searchQuery.toLowerCase()));
+
       if (_activeCategory == 'all') {
         return matchesSearch;
       } else {
-        return matchesSearch && r.tags.any((t) => t.toLowerCase() == _activeCategory);
+        return matchesSearch &&
+            r.tags.any((t) => t.toLowerCase() == _activeCategory);
       }
     }).toList();
 
@@ -53,7 +57,8 @@ class _BrowseViewState extends State<BrowseView> {
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Search for imaginary butter chicken, biryani...',
-                    hintStyle: GoogleFonts.inter(color: AppTheme.textMuted, fontSize: 15),
+                    hintStyle: GoogleFonts.inter(
+                        color: AppTheme.textMuted, fontSize: 15),
                   ),
                 ),
               ),
@@ -63,7 +68,8 @@ class _BrowseViewState extends State<BrowseView> {
         const SizedBox(height: 24),
 
         // Categories Title
-        Text('What are you craving?', style: Theme.of(context).textTheme.titleMedium),
+        Text('What are you craving?',
+            style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
 
         // Horizontal chips
@@ -75,7 +81,8 @@ class _BrowseViewState extends State<BrowseView> {
               _buildCategoryChip('all', 'All Foods', Icons.menu_book),
               _buildCategoryChip('biryani', 'Biryani', Icons.rice_bowl),
               _buildCategoryChip('chaat', 'Chaat', Icons.icecream),
-              _buildCategoryChip('south indian', 'South Indian', Icons.flatware),
+              _buildCategoryChip(
+                  'south indian', 'South Indian', Icons.flatware),
               _buildCategoryChip('burgers', 'Burgers', Icons.lunch_dining),
             ],
           ),
@@ -83,7 +90,8 @@ class _BrowseViewState extends State<BrowseView> {
         const SizedBox(height: 24),
 
         // Restaurants grid title
-        Text('Imaginary Restaurants Near You', style: Theme.of(context).textTheme.titleMedium),
+        Text('Imaginary Restaurants Near You',
+            style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 16),
 
         // Restaurants Grid list
@@ -120,7 +128,8 @@ class _BrowseViewState extends State<BrowseView> {
         selectedColor: AppTheme.primaryAccent,
         checkmarkColor: Colors.white,
         showCheckmark: false,
-        avatar: Icon(icon, color: isActive ? Colors.white : AppTheme.textSecondary, size: 16),
+        avatar: Icon(icon,
+            color: isActive ? Colors.white : AppTheme.textSecondary, size: 16),
         label: Text(
           label,
           style: GoogleFonts.inter(
@@ -174,14 +183,16 @@ class _BrowseViewState extends State<BrowseView> {
                     top: 12,
                     right: 12,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.7),
                         borderRadius: AppTheme.borderSmall,
                       ),
                       child: Text(
                         r.caloriesSavedString,
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -194,21 +205,25 @@ class _BrowseViewState extends State<BrowseView> {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.black.withOpacity(0.8), Colors.transparent],
+                          colors: [
+                            Colors.black.withOpacity(0.8),
+                            Colors.transparent
+                          ],
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
                         ),
                       ),
                       child: Text(
                         r.discountString,
-                        style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 13),
+                        style: GoogleFonts.outfit(
+                            fontWeight: FontWeight.bold, fontSize: 13),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            
+
             // Details part
             Padding(
               padding: const EdgeInsets.all(12.0),
@@ -221,29 +236,37 @@ class _BrowseViewState extends State<BrowseView> {
                       Expanded(
                         child: Text(
                           r.name,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 15),
+                          style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600, fontSize: 15),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(width: 8),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: AppTheme.successGreen,
                           borderRadius: AppTheme.borderSmall,
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.star, color: Colors.white, size: 12),
+                            const Icon(Icons.star,
+                                color: Colors.white, size: 12),
                             const SizedBox(width: 2),
-                            Text(r.rating, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
+                            Text(r.rating,
+                                style: const TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
                           ],
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text('${r.deliveryTime} • ₹300 for two (Virtual)', style: Theme.of(context).textTheme.bodySmall),
+                  Text('${r.deliveryTime} • ₹300 for two (Virtual)',
+                      style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
             ),
@@ -258,11 +281,13 @@ class _BrowseViewState extends State<BrowseView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.restaurant_menu, size: 64, color: AppTheme.textMuted),
+          const Icon(Icons.restaurant_menu,
+              size: 64, color: AppTheme.textMuted),
           const SizedBox(height: 16),
           Text(
             'No restaurants match your craving!',
-            style: GoogleFonts.inter(fontWeight: FontWeight.w600, color: AppTheme.textSecondary),
+            style: GoogleFonts.inter(
+                fontWeight: FontWeight.w600, color: AppTheme.textSecondary),
           ),
         ],
       ),
@@ -282,7 +307,8 @@ class _BrowseViewState extends State<BrowseView> {
           maxChildSize: 0.9,
           expand: false,
           builder: (context, scrollController) {
-            return FoodCustomizerSheet(item: item, scrollController: scrollController);
+            return FoodCustomizerSheet(
+                item: item, scrollController: scrollController);
           },
         );
       },
@@ -294,7 +320,8 @@ class FoodCustomizerSheet extends StatefulWidget {
   final MenuItem item;
   final ScrollController scrollController;
 
-  const FoodCustomizerSheet({super.key, required this.item, required this.scrollController});
+  const FoodCustomizerSheet(
+      {super.key, required this.item, required this.scrollController});
 
   @override
   State<FoodCustomizerSheet> createState() => _FoodCustomizerSheetState();
@@ -307,7 +334,7 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
   @override
   Widget build(BuildContext context) {
     final state = context.read<AppState>();
-    
+
     return Column(
       children: [
         // Handle bar
@@ -315,22 +342,28 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
           width: 40,
           height: 4,
           margin: const EdgeInsets.symmetric(vertical: 12),
-          decoration: BoxDecoration(color: AppTheme.darkBorder, borderRadius: BorderRadius.circular(2)),
+          decoration: BoxDecoration(
+              color: AppTheme.darkBorder,
+              borderRadius: BorderRadius.circular(2)),
         ),
-        
+
         // Header
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.item.name, style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 18)),
-              IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.close)),
+              Text(widget.item.name,
+                  style: GoogleFonts.outfit(
+                      fontWeight: FontWeight.bold, fontSize: 18)),
+              IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.close)),
             ],
           ),
         ),
         const Divider(color: AppTheme.darkBorder),
-        
+
         Expanded(
           child: ListView(
             controller: widget.scrollController,
@@ -339,30 +372,39 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
               Container(
                 height: 180,
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: NetworkImage(widget.item.imageUrl), fit: BoxFit.cover),
+                  image: DecorationImage(
+                      image: NetworkImage(widget.item.imageUrl),
+                      fit: BoxFit.cover),
                 ),
               ),
-              
+
               // Description
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.item.description, style: GoogleFonts.inter(color: AppTheme.textSecondary)),
+                    Text(widget.item.description,
+                        style:
+                            GoogleFonts.inter(color: AppTheme.textSecondary)),
                     const SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Virtual Price:', style: GoogleFonts.inter(fontSize: 14)),
-                        Text('₹${widget.item.price}', style: GoogleFonts.outfit(color: AppTheme.primaryAccent, fontSize: 20, fontWeight: FontWeight.bold)),
+                        Text('Virtual Price:',
+                            style: GoogleFonts.inter(fontSize: 14)),
+                        Text('₹${widget.item.price}',
+                            style: GoogleFonts.outfit(
+                                color: AppTheme.primaryAccent,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ],
                 ),
               ),
               const Divider(color: AppTheme.darkBorder),
-              
+
               // Spice selection
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -371,12 +413,21 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
                   children: [
                     Row(
                       children: [
-                        Text('Spice Level', style: GoogleFonts.outfit(fontWeight: FontWeight.w600, fontSize: 15)),
+                        Text('Spice Level',
+                            style: GoogleFonts.outfit(
+                                fontWeight: FontWeight.w600, fontSize: 15)),
                         const SizedBox(width: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                          decoration: BoxDecoration(color: AppTheme.errorRed.withOpacity(0.1), borderRadius: AppTheme.borderSmall),
-                          child: const Text('Required', style: TextStyle(color: AppTheme.errorRed, fontSize: 10, fontWeight: FontWeight.bold)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                              color: AppTheme.errorRed.withOpacity(0.1),
+                              borderRadius: AppTheme.borderSmall),
+                          child: const Text('Required',
+                              style: TextStyle(
+                                  color: AppTheme.errorRed,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold)),
                         ),
                       ],
                     ),
@@ -394,14 +445,16 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
                 ),
               ),
               const Divider(color: AppTheme.darkBorder),
-              
+
               // Add-ons checklist
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Virtual Add-ons (Free)', style: GoogleFonts.outfit(fontWeight: FontWeight.w600, fontSize: 15)),
+                    Text('Virtual Add-ons (Free)',
+                        style: GoogleFonts.outfit(
+                            fontWeight: FontWeight.w600, fontSize: 15)),
                     const SizedBox(height: 12),
                     _buildAddonCheckbox('Extra Cheese'),
                     _buildAddonCheckbox('Spicy Masala Dusting'),
@@ -412,7 +465,7 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
             ],
           ),
         ),
-        
+
         // Footer Add button
         Container(
           padding: const EdgeInsets.all(20),
@@ -423,7 +476,8 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryAccent,
-                shape: RoundedRectangleBorder(borderRadius: AppTheme.borderMedium),
+                shape:
+                    RoundedRectangleBorder(borderRadius: AppTheme.borderMedium),
               ),
               onPressed: () {
                 state.addToCart(widget.item, _selectedSpice, _selectedAddons);
@@ -437,7 +491,8 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
               },
               child: Text(
                 'Add to Plate (₹${widget.item.price})',
-                style: GoogleFonts.inter(fontWeight: FontWeight.w600, color: Colors.white),
+                style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w600, color: Colors.white),
               ),
             ),
           ),
@@ -453,12 +508,14 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
         selected: isSelected,
         backgroundColor: Colors.transparent,
         selectedColor: AppTheme.primaryAccent.withOpacity(0.1),
-        side: BorderSide(color: isSelected ? AppTheme.primaryAccent : AppTheme.darkBorder),
+        side: BorderSide(
+            color: isSelected ? AppTheme.primaryAccent : AppTheme.darkBorder),
         label: Center(
           child: Text(
             label,
             style: TextStyle(
-              color: isSelected ? AppTheme.primaryAccent : AppTheme.textSecondary,
+              color:
+                  isSelected ? AppTheme.primaryAccent : AppTheme.textSecondary,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),
@@ -475,7 +532,9 @@ class _FoodCustomizerSheetState extends State<FoodCustomizerSheet> {
     final bool isChecked = _selectedAddons.contains(name);
     return CheckboxListTile(
       value: isChecked,
-      title: Text(name, style: GoogleFonts.inter(color: AppTheme.textSecondary, fontSize: 14)),
+      title: Text(name,
+          style:
+              GoogleFonts.inter(color: AppTheme.textSecondary, fontSize: 14)),
       secondary: const Text('+₹0', style: TextStyle(color: AppTheme.textMuted)),
       activeColor: AppTheme.primaryAccent,
       dense: true,
@@ -503,16 +562,18 @@ class _RestaurantMenuBottomSheet extends StatefulWidget {
   });
 
   @override
-  State<_RestaurantMenuBottomSheet> createState() => _RestaurantMenuBottomSheetState();
+  State<_RestaurantMenuBottomSheet> createState() =>
+      _RestaurantMenuBottomSheetState();
 }
 
-class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> {
+class _RestaurantMenuBottomSheetState
+    extends State<_RestaurantMenuBottomSheet> {
   FoodType? _selectedType;
 
   @override
   Widget build(BuildContext context) {
     final double sheetHeight = MediaQuery.of(context).size.height * 0.85;
-    
+
     // Filter the menu items
     final filteredMenu = widget.restaurant.menu.where((item) {
       if (_selectedType == null) return true;
@@ -543,7 +604,7 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
               ),
             ),
           ),
-          
+
           // Restaurant Header & Image
           Stack(
             children: [
@@ -561,7 +622,8 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
                     end: Alignment.topCenter,
                   ),
                 ),
-                child: Image.network(widget.restaurant.imageUrl, fit: BoxFit.cover),
+                child: Image.network(widget.restaurant.imageUrl,
+                    fit: BoxFit.cover),
               ),
               Positioned(
                 top: 8,
@@ -592,18 +654,21 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: AppTheme.successGreen,
                             borderRadius: AppTheme.borderSmall,
                           ),
                           child: Row(
                             children: [
-                              const Icon(Icons.star, color: Colors.white, size: 14),
+                              const Icon(Icons.star,
+                                  color: Colors.white, size: 14),
                               const SizedBox(width: 4),
                               Text(
                                 widget.restaurant.rating,
-                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                             ],
                           ),
@@ -623,13 +688,14 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
               )
             ],
           ),
-          
+
           // Savings Promos
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: Row(
               children: [
-                const Icon(Icons.savings, color: AppTheme.warningGold, size: 20),
+                const Icon(Icons.savings,
+                    color: AppTheme.warningGold, size: 20),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -645,7 +711,7 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
             ),
           ),
           const Divider(color: AppTheme.darkBorder, height: 1),
-          
+
           // Filter Chips
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -662,7 +728,7 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
             ),
           ),
           const Divider(color: AppTheme.darkBorder, height: 1),
-          
+
           // Menu Items List
           Expanded(
             child: filteredMenu.isEmpty
@@ -675,7 +741,8 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
                 : ListView.separated(
                     padding: const EdgeInsets.all(20),
                     itemCount: filteredMenu.length,
-                    separatorBuilder: (_, __) => const Divider(color: AppTheme.darkBorder, height: 32),
+                    separatorBuilder: (_, __) =>
+                        const Divider(color: AppTheme.darkBorder, height: 32),
                     itemBuilder: (context, index) {
                       final item = filteredMenu[index];
                       return _buildMenuItemRow(item);
@@ -713,7 +780,7 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
     Color typeBorderColor;
     Color typeCircleColor;
     IconData? typeIcon;
-    
+
     if (item.type == FoodType.veg) {
       typeBorderColor = AppTheme.successGreen;
       typeCircleColor = AppTheme.successGreen;
@@ -756,8 +823,8 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    item.type == FoodType.veg 
-                        ? 'VEG' 
+                    item.type == FoodType.veg
+                        ? 'VEG'
                         : (item.type == FoodType.vegan ? 'VEGAN' : 'NON-VEG'),
                     style: GoogleFonts.inter(
                       fontSize: 10,
@@ -801,7 +868,7 @@ class _RestaurantMenuBottomSheetState extends State<_RestaurantMenuBottomSheet> 
           ),
         ),
         const SizedBox(width: 16),
-        
+
         // Dish image & Add button
         Column(
           children: [

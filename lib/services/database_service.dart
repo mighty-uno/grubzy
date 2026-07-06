@@ -35,6 +35,9 @@ class DatabaseService {
       onCreate: _createDB,
       onOpen: (db) async {
         await db.rawUpdate(
+          "UPDATE menu_items SET image_url = 'https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=400&q=80' WHERE id = 'm9'"
+        );
+        await db.rawUpdate(
           "UPDATE restaurants SET image_url = REPLACE(image_url, 'df056fb4ce78', 'df0568f70950') WHERE image_url LIKE '%df056fb4ce78%'"
         );
         await db.rawUpdate(
@@ -280,7 +283,7 @@ class DatabaseService {
         'name': 'Hummus & Falafel Plate (Ghost)',
         'price': 220.0,
         'description': 'Creamy virtual chickpea hummus served with 3 pieces of golden imaginary falafel and warm pita bread.',
-        'image_url': 'https://images.unsplash.com/photo-1547058886-af77813be045?auto=format&fit=crop&w=400&q=80',
+        'image_url': 'https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=400&q=80',
         'kcal': 480,
         'type': 'veg',
       },
@@ -510,13 +513,15 @@ class DatabaseService {
     if (kIsWeb) {
       if (isTursoConfigured) {
         try {
-          // Check if tables exist by querying sqlite_master
           final tables = await query("SELECT name FROM sqlite_master WHERE type='table' AND name='restaurants'");
           if (tables.isEmpty) {
             await _createTursoTablesAndSeed();
           } else {
             await _applyTursoMigrations();
           }
+          await executeWrite(
+            "UPDATE menu_items SET image_url = 'https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=400&q=80' WHERE id = 'm9'"
+          );
         } catch (e) {
           debugPrint("Failed to initialize Turso on Web: $e");
           rethrow;
@@ -606,7 +611,7 @@ class DatabaseService {
       "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m6', 'r3', 'Zero-Calorie Avocado Toast', 240.0, 'Toasted sourdough bread topped with creamy virtual avocado mash, red pepper flakes, and a squeeze of simulated lemon.', 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80', 290, 'vegan')",
       "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m7', 'r3', 'Simulated Quinoa Power Bowl', 280.0, 'A nutrient-rich mix of virtual red quinoa, steamed kale, cherry tomatoes, and cucumber, drizzled with ghost tahini dressing.', 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80', 340, 'vegan')",
       "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m8', 'r3', 'Mirage Tofu Stir-Fry', 260.0, 'Crispy virtual tofu cubes tossed with broccoli, bell peppers, and snap peas in a simulated light soy glaze.', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80', 310, 'vegan')",
-      "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m9', 'r3', 'Hummus & Falafel Plate (Ghost)', 220.0, 'Creamy virtual chickpea hummus served with 3 pieces of golden imaginary falafel and warm pita bread.', 'https://images.unsplash.com/photo-1547058886-af77813be045?auto=format&fit=crop&w=400&q=80', 480, 'veg')",
+      "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m9', 'r3', 'Hummus & Falafel Plate (Ghost)', 220.0, 'Creamy virtual chickpea hummus served with 3 pieces of golden imaginary falafel and warm pita bread.', 'https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=400&q=80', 480, 'veg')",
       "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m10', 'r4', 'Ghost Golgappa (Pani Puri)', 90.0, '6 crispy hollow puris stuffed with potatoes and loaded with spicy-sweet virtual flavored water. Pop it whole!', 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80', 180, 'vegan')",
       "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m11', 'r4', 'Dopamine Dahi Puri', 130.0, 'Crispy puris filled with potatoes, sweet virtual yogurt, tangy tamarind chutney, and topped with thin sev.', 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80', 320, 'veg')",
       "INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, description, image_url, kcal, type) VALUES ('m12', 'r4', 'Simulated Samosa Chaat', 150.0, 'Deconstructed hot samosa smothered in spicy virtual chickpea curry, sweet yogurt, chutneys, and fresh coriander.', 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80', 410, 'veg')",
