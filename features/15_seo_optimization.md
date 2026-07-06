@@ -7,13 +7,13 @@ This document outlines the metadata integrations, crawl schemas, and manual regi
 
 ## 1. Search Engine Crawler Assets
 We deployed the following files in the project root directory:
-*   **[`robots.txt`](file:///Users/himanshusharma/Documents/dev-work/bhukkad/robots.txt)**: Directs crawlers to index all pages and lists the sitemap location.
-*   **[`sitemap.xml`](file:///Users/himanshusharma/Documents/dev-work/bhukkad/sitemap.xml)**: Explicitly provides crawlers with the list of pages, update frequencies, and weights.
+*   **[`robots.txt`](robots.txt)**: Directs crawlers to index all pages and lists the sitemap location.
+*   **[`sitemap.xml`](sitemap.xml)**: Explicitly provides crawlers with the list of pages, update frequencies, and weights.
 
 ---
 
 ## 2. On-Page SEO Upgrades
-We updated the headers inside [`index.html`](file:///Users/himanshusharma/Documents/dev-work/bhukkad/index.html):
+We updated the headers inside [`index.html`](index.html):
 *   **Canonical URL Tag**: Prevents duplicate-content warnings for query parameters.
 *   **Open Graph Metadata**: Renders rich previews (e.g. logos, tags) when links are shared on WhatsApp, Telegram, or Twitter.
 *   **JSON-LD Schema Markup**: Standard structured format declaring Grubzy as a `SoftwareApplication` to help Google parse and present the app directly in search cards.
