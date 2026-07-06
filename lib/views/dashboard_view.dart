@@ -353,7 +353,7 @@ class DashboardView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         ),
         onPressed: () async {
-          final Uri url = Uri.parse('https://rzp.io/rzp/fAcZtag');
+          final Uri url = Uri.parse('https://razorpay.me/@grubzy');
           if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
             debugPrint('Could not launch support URL');
           }

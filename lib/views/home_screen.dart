@@ -329,7 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _launchSupportUrl() async {
-    final Uri url = Uri.parse('https://rzp.io/rzp/fAcZtag');
+    final Uri url = Uri.parse('https://razorpay.me/@grubzy');
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       debugPrint('Could not launch support URL');
     }
