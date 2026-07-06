@@ -105,6 +105,7 @@ class AppState extends ChangeNotifier {
       await Future.delayed(const Duration(milliseconds: 600));
 
       final dbHelper = DatabaseService.instance;
+      await dbHelper.initializeDatabase();
 
       // 1. Load User Stats
       _loadingStatus = "Sourcing imaginary ingredients...";
